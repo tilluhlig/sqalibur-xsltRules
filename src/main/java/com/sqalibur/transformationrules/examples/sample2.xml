@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="baum.xsd">
+    
+    <!-- Eingabe: not not not ((a>5) and ((b>5) or (c>5 or d>5)))-->
+    <!-- Regel: not not => not -->
+    <!-- Regel: not (a and b) => (not a or not b) -->
+    <node label="or" class="binop">
+        <node label="not" class="unop">
+            <node label="&gt;" class="binop">
+                <node label="a"/>asd
+                <node label="5"/>
+            </node>
+        </node><!-- Regel: not (a or b) => (not a and not b) --><!-- Regel: and + and => and-->
+        <node label="and" class="binop">
+            <node label="not" class="unop">
+                <node label="&gt;" class="binop">
+                    <node label="b"/>
+                    <node label="5"/>
+                </node>
+            </node><!-- Regel: not (a or b) => (not a and not b) -->
+            <node label="not" class="unop">
+                <node label="&gt;" class="binop">
+                    <node label="c"/>
+                    <node label="5"/>
+                </node>
+            </node>
+            <node label="not" class="unop">
+                <node label="&gt;" class="binop">
+                    <node label="d"/>
+                    <node label="5"/>
+                </node>
+            </node>
+        </node>
+    </node>
+        
+</root>

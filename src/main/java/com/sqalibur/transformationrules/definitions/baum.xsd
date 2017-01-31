@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           elementFormDefault="qualified"
+           vc:minVersion="1.0" vc:maxVersion="1.1">
+    
+    <!-- die Wurzel des Baums -->
+    <xs:element name="root" type="node"/>
+    
+    <!-- der allgemeine Knotentyp -->
+    <xs:complexType name="node">
+        <xs:sequence>
+            <xs:element
+                name="node" type="node"
+                minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute
+            name="label" type="xs:string" use="optional"/>
+        <xs:attribute
+            name="class" type="xs:string" use="optional"
+            default="const"/>
+        <xs:attribute
+            name="signature" type="xs:string" use="optional"/>
+    </xs:complexType>
+</xs:schema>
