@@ -11,9 +11,9 @@
         <xsl:variable name="type" select="./child::node/@label"/>
         <xsl:variable name="pos" select="ext:node-set($valDeMorgan)/param[@par = $type]/text()"/>
         <xsl:variable name="type2" select="ext:node-set($valDeMorgan)/param[text() = 1-$pos]/@par"/>
+        <!--<xsl:comment> Regel: not (a <xsl:value-of select="$type"/> b) => (not a <xsl:value-of select="$type2"/> not b) </xsl:comment>-->
             
         <xsl:variable name="result">
-            <xsl:comment> Regel: not (a <xsl:value-of select="$type"/> b) => (not a <xsl:value-of select="$type2"/> not b) </xsl:comment>
             <node label="{$type2}" class="binop">
                 <xsl:for-each select="./node/child::*">
                     <node label="not" class="unop">

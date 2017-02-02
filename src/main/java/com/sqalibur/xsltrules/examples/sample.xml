@@ -6,7 +6,7 @@
             <node label="not" class="unop">
                 <node label="and" class="binop">
                     <node label="&gt;" class="binop">
-                        <node label="a"/>asd
+                        <node label="a"/>
                         <node label="5"/>
                     </node>
                     <node label="or" class="binop">
