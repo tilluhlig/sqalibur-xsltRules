@@ -18,13 +18,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ext="http://exslt.org/common" exclude-result-prefixes="ext" version="1.0">
     <xsl:output method="xml"/>
-    <xsl:strip-space elements="*"/><!-- alternative: node -->
 
-    <xsl:include href="rules/wurzel.xsl"/>
-    <xsl:include href="rules/deMorgan.xsl"/>
-    <xsl:include href="rules/doppelnegation.xsl"/>
-    <xsl:include href="rules/glaetten.xsl"/>
-    <xsl:include href="rules/saeubern.xsl"/>
-    <xsl:include href="rules/distributivgesetz.xsl"/>
-    <xsl:include href="rules/kopieren.xsl"/>
+    <!-- Doppelnegationsgesetz (not darf nur ein Kind besitzen) -->
+    <xsl:template match="node[@label = 'not' and child::node[@label='not']]">
+        <!--<xsl:comment> Regel: not not => not </xsl:comment>-->
+        
+        <xsl:variable name="result">
+            <xsl:apply-templates select="./node/child::node()"/>
+        </xsl:variable>
+        <xsl:apply-templates select="ext:node-set($result)"/>
+    </xsl:template>
 </xsl:stylesheet>
