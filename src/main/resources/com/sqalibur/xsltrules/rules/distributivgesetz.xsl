@@ -1,15 +1,15 @@
 <!-- Distributivgesetz or/and -->
 <!-- TODO: or kann auch mehr Kinder haben -->
 <!-- >> dann immer ein kind von 'or' mit dem and umwandeln -->
-<xsl:template match="node[@label='or' and count(./child::*) = 2 and child::node[@label='and']]">
+<xsl:template match="node[@label='OR' and count(./child::*) = 2 and child::node[@label='AND']]">
     <!--<xsl:comment> Regel: a or (b and c) => (a or b) and (a or c) </xsl:comment>-->
     <xsl:variable name="partA" select="child::node[1]"/>
     <xsl:variable name="result">
         <xsl:copy>
             <xsl:apply-templates select="@*"/> <!-- ??? -->
-            <node label="and" class="binop">
+            <node label="AND" class="binop">
                 <xsl:for-each select="./child::node[2]/child::*">
-                    <node label="or" class="binop">
+                    <node label="OR" class="binop">
                         <xsl:copy-of select="$partA">
                             <xsl:apply-templates select="ext:node-set($partA)"/>
                         </xsl:copy-of>

@@ -1,7 +1,7 @@
 <!-- Glättten von 'or/or' und 'and/and' -->
 <xsl:variable name="valGlaetten">
-    <param par="or"/>
-    <param par="and"/>
+    <param par="OR"/>
+    <param par="AND"/>
 </xsl:variable>
 <xsl:template match="node[@label = ext:node-set($valGlaetten)/*/@par and child::node[@label=../@label]]">
     <xsl:variable name="type" select="@label"/>

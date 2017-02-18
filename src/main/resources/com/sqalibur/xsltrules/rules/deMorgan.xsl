@@ -1,7 +1,7 @@
 <!-- De Morgang not/(and|or) (not darf nur ein Kind besitzen) -->
 <xsl:variable name="valDeMorgan">
-    <param par="or">0</param>
-    <param par="and">1</param>
+    <param par="OR">0</param>
+    <param par="AND">1</param>
 </xsl:variable>
 <xsl:template match="node[@label = 'not' and child::node[@label=ext:node-set($valDeMorgan)/*/@par]]">
     <xsl:variable name="type" select="./child::node/@label"/>
