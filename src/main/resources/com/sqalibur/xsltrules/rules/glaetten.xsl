@@ -1,16 +1,31 @@
 <!-- Glättten von 'or/or' und 'and/and' -->
 <xsl:variable name="valGlaetten">
-    <param par="OR"/>
-    <param par="AND"/>
+    <param par="OrExpression"/>
+    <param par="AndExpression"/>
+    <param par="Addition"/>
+    <param par="Concat"/>
+    <param par="Multiplication"/>
+    <param par="Division"/>
+    <param par="Subtraction"/>
+    <param par="BitwiseAnd"/>
+    <param par="BitwiseOr"/>
+    <param par="BitwiseXor"/>
+    <param par="LikeExpression"/>
+    <param par="EqualsTo"/>
+    <param par="GreaterThan"/>
+    <param par="GreaterThanEquals"/>
+    <param par="MinorThan"/>
+    <param par="MinorThanEquals"/>
+    <param par="NotEqualsTo"/>
 </xsl:variable>
-<xsl:template match="node[@label = ext:node-set($valGlaetten)/*/@par and child::node[@label=../@label]]">
-    <xsl:variable name="type" select="@label"/>
+<xsl:template match="node[@class = ext:node-set($valGlaetten)/*/@par and child::node[@class=../@class]]">
+    <xsl:variable name="type" select="@class"/>
     <!--<xsl:comment> Regel: <xsl:value-of select="$type"/> + <xsl:value-of select="$type"/> => <xsl:value-of select="$type"/> </xsl:comment>-->
     <xsl:variable name="result">
         <xsl:copy>
             <xsl:for-each select="./child::node()|@*"><!-- hier können 'or' bzw. 'and' dabei sein -->
                 <xsl:choose>  
-                    <xsl:when test="@label=$type"> 
+                    <xsl:when test="@class=$type"> 
                         <xsl:apply-templates select="./child::node()|@*"/>
                     </xsl:when> 
                     <xsl:otherwise>

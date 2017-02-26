@@ -1,5 +1,5 @@
 <!-- Doppelnegationsgesetz (not darf nur ein Kind besitzen) -->
-<xsl:template match="node[@label = 'not' and child::node[@label='not']]">
+<xsl:template match="node[@class = 'notExpression' and child::node[@class='notExpression']]">
     <!--<xsl:comment> Regel: not not => not </xsl:comment>-->
         
     <xsl:variable name="result">
