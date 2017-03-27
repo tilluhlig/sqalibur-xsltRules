@@ -18,7 +18,7 @@ package com.sqalibur.xsltrules;
 
 /**
  *
- * @author Till Uhlig <till.uhlig@student.uni-halle.de>
+ * @author Till Uhlig {@literal <till.uhlig@student.uni-halle.de>}
  */
 public class xsltRules {
 
